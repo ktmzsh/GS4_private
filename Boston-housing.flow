@@ -1,0 +1,57 @@
+{
+  "version": "1.0.0",
+  "cells": [
+    {
+      "type": "cs",
+      "input": "assist"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles"
+    },
+    {
+      "type": "cs",
+      "input": "importFiles [ \"C:\\\\Users\\\\keimi\\\\Desktop\\\\AutoML\\\\Hands-on_python\\\\boston_sklearn.csv\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "setupParse source_frames: [ \"nfs:\\\\C:\\\\Users\\\\keimi\\\\Desktop\\\\AutoML\\\\Hands-on_python\\\\boston_sklearn.csv\" ]"
+    },
+    {
+      "type": "cs",
+      "input": "parseFiles\n  source_frames: [\"nfs:\\\\C:\\\\Users\\\\keimi\\\\Desktop\\\\AutoML\\\\Hands-on_python\\\\boston_sklearn.csv\"]\n  destination_frame: \"boston_sklearn.hex\"\n  parse_type: \"CSV\"\n  separator: 44\n  number_columns: 14\n  single_quotes: false\n  column_names: [\"CRIM\",\"ZN\",\"INDUS\",\"CHAS\",\"NOX\",\"RM\",\"AGE\",\"DIS\",\"RAD\",\"TAX\",\"PTRATIO\",\"B\",\"LSTAT\",\"MEDV\"]\n  column_types: [\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\",\"Numeric\"]\n  delete_on_done: true\n  check_header: 1\n  chunk_size: 4194304"
+    },
+    {
+      "type": "cs",
+      "input": "getFrameSummary \"boston_sklearn.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "assist runAutoML, training_frame: \"boston_sklearn.hex\""
+    },
+    {
+      "type": "cs",
+      "input": "runAutoML {\"input_spec\":{\"training_frame\":\"boston_sklearn.hex\",\"response_column\":\"MEDV\",\"ignored_columns\":[],\"sort_metric\":\"AUTO\"},\"build_control\":{\"nfolds\":5,\"balance_classes\":false,\"stopping_criteria\":{\"seed\":-1,\"max_models\":0,\"max_runtime_secs\":0,\"max_runtime_secs_per_model\":0,\"stopping_rounds\":3,\"stopping_metric\":\"AUTO\",\"stopping_tolerance\":-1},\"keep_cross_validation_predictions\":true,\"keep_cross_validation_models\":true,\"keep_cross_validation_fold_assignment\":false},\"build_models\":{\"exclude_algos\":[],\"exploitation_ratio\":0,\"monotone_constraints\":[]}}, 'exec'"
+    },
+    {
+      "type": "cs",
+      "input": "getLeaderboard \"AutoML_20200610_100117649@@MEDV\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"GBM_1_AutoML_20200610_100117\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"GBM_1_AutoML_20200610_100117_cv_1\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"GBM_grid__1_AutoML_20200610_100117_model_6\""
+    },
+    {
+      "type": "cs",
+      "input": "getModel \"DRF_1_AutoML_20200610_100117\""
+    }
+  ]
+}
